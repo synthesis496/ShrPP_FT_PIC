@@ -1,12 +1,13 @@
-# ShrPP_PIC
+# SHRPPCore: Infinite-Domain Open Quantum System Framework
 
+Inventor & Architect: Chutiphong Bunloed
+Affiliation: Independent Researcher, Buriram, Thailand
 
 #Copyright (c) 2026.Chutiphong Bunloed
 #All Rights Reserved.
 
+DOI 10.5281/Zenodo.23384785
 Orcid : 0009-0003-4295-7521
-
-# SHRPPCore: Infinite-Domain Open Quantum System Framework
 
 **SHRPPCore** is a high-performance open-source computational framework designed to simulate and protect **Open Quantum Systems** under structural noise. 
 
@@ -87,7 +88,7 @@ E-mail: synthesis496@gmail.com
   publisher    = {GitHub},
   journal      = {GitHub Repository},
   howpublished \(={\url{https://github.com/synthesis496/ShrPP_FT_PIC}},\)
-  note         = {ORCID: 0009-0003-4295-7521. DOI: [PENDING - TO BE UPDATED]}
+  note         = {ORCID: 0009-0003-4295-7521. DOI: [10.5281/Zenodo.23384785]}
 }
 ```
 
