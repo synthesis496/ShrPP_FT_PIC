@@ -61,7 +61,35 @@ healed_state = core.lindblad_evolve(initial_state, steps=500, dt=0.001)
 print(f"Healed State Purity: {core.purity(healed_state)}")
 ```
 
----
+##  Commercial Licensing & IP Acquisition Notice
+
+**This framework and its underlying unique mathematical methodologies are available for intellectual property (IP) acquisition, technology transfer, or commercial licensing.**
+
+While the current open-source repository is distributed under the strict copyleft terms of the **AGPL-3.0 License** (suitable for non-commercial academic evaluation), it is specifically architected to serve as a high-value asset for quantum technology companies.
+
+Organizations looking to:
+*   Integrate this infinite-domain framework into proprietary full-stack quantum software,
+*   Deploy these algorithms within closed-source quantum cloud environments without AGPL restrictions,
+*   **Patent Ready:** The underlying innovations are currently unpatented, leaving the exclusive global **"Right to Patent"** fully intact. The acquiring party will receive the complete exclusive rights to file, register, and proprietary-own all worldwide patents derived from this framework and its architectural blueprints.
+
+Are invited to initiate formal commercial discussions. For serious inquiries regarding corporate licensing packages, technology transfer, or full IP purchasing, please contact the author directly via the credentials listed below
+
+E-mail: synthesis496@gmail.com
+
+##  Citation & Academic Reference
+
+```bibtex
+@misc{bunloed2026shrpp,
+  author       = {Bunloed, Chutiphong},
+  title        = {SHRPPCore: PIC Infinite-Domain Open Quantum System Framework using Fibonacci Time Self-Similarity and Folding Mirrors},
+  year         = {2026},
+  publisher    = {GitHub},
+  journal      = {GitHub Repository},
+  howpublished \(= {\url{https://github.com}},\)
+  note         = {ORCID: 0009-0003-4295-7521. DOI: [PENDING - TO BE UPDATED]}
+}
+```
+
 
 
 
