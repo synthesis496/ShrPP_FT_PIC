@@ -15,7 +15,7 @@ By shifting away from traditional brute-force classical simulations, this framew
 
 ---
 
-## 🚀 Key Innovations & Architecture
+##  Key Innovations & Architecture
 
 The architecture relies on the interplay between three main concepts deployed across the provided repository files (`shrpp_core.py`, `shrpp_tests.py`, and `shrpp_benchmark.py`):
 
@@ -25,7 +25,7 @@ The architecture relies on the interplay between three main concepts deployed ac
 
 ---
 
-## 💡 Practical Benefits
+##  Practical Benefits
 
 *   **Sub-Exponential Scaling:** Through scaling benchmarks, the engine bypasses the standard \(\mathcal{O}(d^3)\) computational bottleneck. The structural symmetries push the scaling exponent down, allowing classical computers to simulate ultra-high dimensions without memory overflow.
 *   **Advanced Dynamic Decoupling:** Proves that non-periodic, fractal-like gate interventions protect quantum states from decoherence significantly better than traditional uniform pulsing methods.
@@ -33,7 +33,7 @@ The architecture relies on the interplay between three main concepts deployed ac
 
 ---
 
-## 📦 Project Structure
+##  Project Structure
 
 The project is lightweight and streamlined into 3 main pillars:
 1.  **`shrpp_core.py`:** The computational engine. Contains the core quantum object mapping, open system dynamics simulators, fractal time calculators, and spatial folding operators.
@@ -83,7 +83,7 @@ Long-term evolution highlights that while periodic pulsing suffers linear state 
 
 ---
 
-## 🛠️ Quick Start
+##  Quick Start
 
 ```python
 import numpy as np
