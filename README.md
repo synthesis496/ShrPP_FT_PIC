@@ -70,6 +70,7 @@ While the current open-source repository is distributed under the strict copylef
 Organizations looking to:
 *   Integrate this infinite-domain framework into proprietary full-stack quantum software,
 *   Deploy these algorithms within closed-source quantum cloud environments without AGPL restrictions,
+*   Or acquire exclusive worldwide patent rights for hardware optimization.
 *   **Patent Ready:** The underlying innovations are currently unpatented, leaving the exclusive global **"Right to Patent"** fully intact. The acquiring party will receive the complete exclusive rights to file, register, and proprietary-own all worldwide patents derived from this framework and its architectural blueprints.
 
 Are invited to initiate formal commercial discussions. For serious inquiries regarding corporate licensing packages, technology transfer, or full IP purchasing, please contact the author directly via the credentials listed below
@@ -85,7 +86,7 @@ E-mail: synthesis496@gmail.com
   year         = {2026},
   publisher    = {GitHub},
   journal      = {GitHub Repository},
-  howpublished \(= {\url{https://github.com}},\)
+  howpublished \(={\url{https://github.com/synthesis496/ShrPP_FT_PIC}},\)
   note         = {ORCID: 0009-0003-4295-7521. DOI: [PENDING - TO BE UPDATED]}
 }
 ```
