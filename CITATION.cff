@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software or framework, please cite it as below."
+authors:
+  - family-names: "Bunloed"
+    given-names: "Chutiphong"
+    orcid: "https://orcid.org"
+title: "ShrPP_FT_PIC: PIC Infinite-Domain Open Quantum System Framework using Fibonacci Time Self-Similarity and Folding Mirrors"
+version: "1.0.0"
+doi: "10.5281/Zenodo.23384785"
+date-released: "2026-10-26"
+url: "https://github.com/synthesis496/ShrPP_FT_PIC"
