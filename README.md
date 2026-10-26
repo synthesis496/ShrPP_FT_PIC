@@ -103,21 +103,15 @@ healed_state = core.lindblad_evolve(initial_state, steps=500, dt=0.001)
 print(f"Healed State Purity: {core.purity(healed_state)}")
 ```
 
-##  Commercial Licensing & IP Acquisition Notice
+## ⚖️ Commercial Licensing & Intellectual Property (IP) Status
 
-**This framework and its underlying unique mathematical methodologies are available for intellectual property (IP) acquisition, technology transfer, or commercial licensing.**
+This framework is dual-licensed to support both public academic reproducibility and commercial enterprise deployment:
 
-While the current open-source repository is distributed under the strict copyleft terms of the **AGPL-3.0 License** (suitable for non-commercial academic evaluation), it is specifically architected to serve as a high-value asset for quantum technology companies.
+* **Open-Source Stream:** The public repository core is distributed under the strict copyleft terms of the **AGPL-3.0 License** (suitable for non-commercial evaluation and open-science collaboration).
+* **Commercial & Enterprise Inquiries:** For commercial use-cases, full architectural integration without AGPL limitations, or exclusive worldwide technology transfer/patent rights acquisition, please contact the author directly for secure due-diligence sessions.
 
-Organizations looking to:
-*   Integrate this infinite-domain framework into proprietary full-stack quantum software,
-*   Deploy these algorithms within closed-source quantum cloud environments without AGPL restrictions,
-*   Or acquire exclusive worldwide patent rights for hardware optimization.
-*   **Patent Ready:** The underlying innovations are currently unpatented, leaving the exclusive global **"Right to Patent"** fully intact. The acquiring party will receive the complete exclusive rights to file, register, and proprietary-own all worldwide patents derived from this framework and its architectural blueprints.
+ **Contact:** [synthesis496@gmail.com](mailto:synthesis496@gmail.com)
 
-Are invited to initiate formal commercial discussions. For serious inquiries regarding corporate licensing packages, technology transfer, or full IP purchasing, please contact the author directly via the credentials listed below
-
-E-mail: synthesis496@gmail.com
 
 ##  Citation & Academic Reference
 
