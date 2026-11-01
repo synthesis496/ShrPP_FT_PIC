@@ -9,6 +9,10 @@ Affiliation: Independent Researcher, Buriram, Thailand
 DOI 10.5281/Zenodo.23384785
 Orcid : 0009-0003-4295-7521
 
+## Support & Star 🌟
+If you find this Quantum Error Correction architecture useful, or if it helps with your research, please consider giving this repository a **Star**! It helps increase visibility and keeps me motivated to maintain the project. 
+
+
 **SHRPPCore** is a high-performance open-source computational framework designed to simulate and protect **Open Quantum Systems** under structural noise. 
 
 By shifting away from traditional brute-force classical simulations, this framework utilizes the **self-similarity of Fibonacci time sequences** and **dimensional folding mirrors** to model complex quantum dynamics. It achieves extreme scalability and state-healing benchmarks—even on traditional hardware—making it a powerful tool for analyzing infinite-domain quantum physics.
