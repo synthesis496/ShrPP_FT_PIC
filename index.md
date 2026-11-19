@@ -1,137 +1,259 @@
-# SHRPP_PIC: Infinite-Domain Open Quantum System Framework
+# ShrPP_FT_PIC
 
-Inventor & Architect: Chutiphong Bunloed
-Affiliation: Independent Researcher, Buriram, Thailand
+**SHRPPCore: PIC Infinite-Domain Open Quantum System Framework**
 
-#Copyright (c) 2026.Chutiphong Bunloed
-#All Rights Reserved.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB.svg)](https://www.python.org)
+[![NumPy](https://img.shields.io/badge/NumPy-required-013243.svg)](https://numpy.org)
 
-DOI 10.5281/Zenodo.23384785
-Orcid : 0009-0003-4295-7521
-
-**SHRPPCore** is a high-performance open-source computational framework designed to simulate and protect **Open Quantum Systems** under structural noise. 
-
-By shifting away from traditional brute-force classical simulations, this framework utilizes the **self-similarity of Fibonacci time sequences** and **dimensional folding mirrors** to model complex quantum dynamics. It achieves extreme scalability and state-healing benchmarks—even on traditional hardware—making it a powerful tool for analyzing infinite-domain quantum physics.
+Developed by **Chutiphong Bunloed**  
+Independent Researcher, Buriram, Thailand  
+ORCID: [0009-0003-4295-7521](https://orcid.org/0009-0003-4295-7521)  
+DOI: [10.5281/Zenodo.23384785](https://doi.org/10.5281/Zenodo.23384785)
 
 ---
 
-##  Key Innovations & Architecture
+## Overview
 
-The architecture relies on the interplay between three main concepts deployed across the provided repository files (`shrpp_core.py`, `shrpp_tests.py`, and `shrpp_benchmark.py`):
+**ShrPP_FT_PIC** is a NumPy-based Python research framework for studying open quantum-system dynamics, Fibonacci-time evolution, and dimensional mirror operators.
 
-*   **Fibonacci-Driven Dynamics (Aperiodic Driving):** Instead of standard periodic time steps, the framework drives the system along Fibonacci time intervals. This mathematical self-similarity triggers destructive interference against unwanted environmental noise, acting as a natural buffer that compresses resonance spikes.
-*   **Folding & Mirror Symmetries:** Incorporating unified and generalized reflection operators allows the system to compress infinite-domain spaces. By "folding" quantum information back into controlled symmetry sectors, the engine avoids the exponential memory explosion typical of high-dimensional matrix operations.
-*   **Quantum State Healing:** Features an open quantum system simulator based on master equations, augmented with multi-level healing operators. It drives system dissipation toward structured recovery rather than entropy, maintaining state purity over prolonged scales.
+The repository currently provides:
 
----
+- Fibonacci sequences and Fibonacci-time samples
+- Fibonacci-weighted amplitudes and alternating phases
+- Lindblad-style density-matrix evolution
+- Unified, component, and generalized mirror operators
+- Numerical tests for resonance suppression, purity, mirror algebra, and codespace behavior
+- A runtime scaling benchmark across dimensions 8–256
 
-##  Practical Benefits
+> This repository is a numerical research implementation. Its current Hamiltonian is zero in `SHRPPCore`, while the Lindblad evolution uses a healing operator. Extending the implementation for hardware or physical deployment requires defining and validating the appropriate Hamiltonian, noise operators, and system constraints.
 
-*   **Sub-Exponential Scaling:** Through scaling benchmarks, the engine bypasses the standard \(\mathcal{O}(d^3)\) computational bottleneck. The structural symmetries push the scaling exponent down, allowing classical computers to simulate ultra-high dimensions without memory overflow.
-*   **Advanced Dynamic Decoupling:** Proves that non-periodic, fractal-like gate interventions protect quantum states from decoherence significantly better than traditional uniform pulsing methods.
-*   **Error Mitigation Research:** Provides out-of-the-box spectral functions to observe how non-local state transitions filter errors out post-measurement, crucial for developing software-based quantum error mitigation (QEM).
+## Key Features
 
----
+| Feature | Implementation |
+|---|---|
+| Fibonacci sequence | `SHRPPCore.fibonacci_sequence()` |
+| Fibonacci time | `SHRPPCore.fibonacci_time()` |
+| Fibonacci amplitudes | `SHRPPCore.fibonacci_amplitudes()` |
+| Fibonacci phases | `SHRPPCore.fibonacci_phases()` |
+| Lindblad evolution | `SHRPPCore.lindblad_step()`, `SHRPPCore.lindblad_evolve()` |
+| Density-matrix purity | `SHRPPCore.purity()` |
+| Unified/component mirrors | `SHRPPCore.unified_mirror()`, `SHRPPCore.mirror_components()` |
+| Generalized mirror | `SHRPPCore.generalized_mirror(level)` |
+| Resonance spectra | `resonance_amplitude()`, `resonance_spectrum()`, `fib_spectral_function()` |
 
-##  Project Structure
+## Repository Structure
 
-The project is lightweight and streamlined into 3 main pillars:
-1.  **`shrpp_core.py`:** The computational engine. Contains the core quantum object mapping, open system dynamics simulators, fractal time calculators, and spatial folding operators.
-2.  **`shrpp_tests.py`:** A suite of validation tests (t31 to t40) verifying spectral suppression ratios, purity monotonicity, dynamic decoupling improvements, and algebraic symmetries.
-3.  **`shrpp_benchmark.py`:** An automated performance profiling script that computes the asymptotic log-log runtime scaling exponent of the framework across expanding dimensions.
+```text
+ShrPP_FT_PIC/
+├── shrpp_core.py          # Core class, spectral functions, and mirror operators
+├── test_shrpp.py          # Numerical tests t31-t35 and t40
+├── benchmark_shrpp.py     # Runtime benchmark for dimensions 8 through 256
+├── pp01.png ... pp05.png  # Generated result figures
+├── CITATION.cff           # Citation metadata
+├── LICENSE                # GNU AGPL-3.0 license
+├── README.md              # Project documentation
+└── index.md               # Documentation website content
+```
 
+## Installation
 
-## 📊 Empirical Verification & Simulation Results
+Python 3 and NumPy are required.
 
-To visualize the computational breakthroughs achieved by the framework, the test suites yield the following empirical figures:
+```bash
+git clone https://github.com/synthesis496/ShrPP_FT_PIC.git
+cd ShrPP_FT_PIC
+pip install numpy
+```
 
-### 1. Dimensional Scaling Benchmarks & Algebraic Consistency
-Log-log asymptotic analysis shows smooth computational scaling across expanding dimensions. The structural algebraic folding components satisfy strict anti-commutation properties with zero floating-point error.
+No additional package or build configuration is currently included in the repository.
 
-<p align="center">
-  <img src="pp01.png" width="48%" alt="Benchmark Scaling" />
-  <img src="pp02.png" width="48%" alt="t35 Anticommutation Heatmap" />
-</p>
-<p align="center">
-  <em>Figure 1: Runtime performance log-log complexity scaling (pp01, Left) and machine-epsilon algebraic check (pp02, Right).</em>
-</p>
+## Quick Start
 
----
+### Create a core instance
 
-### 2. Resonance Suppression & Mathematics Stability
-Across a 2,000-point frequency resolution spectrum, the Fibonacci-driven model completely dampens catastrophic energy build-ups. The numerical sum demonstrates perfect convergence layout over long-term evolution horizons.
+```python
+from shrpp_core import SHRPPCore
 
-<p align="center">
-  <img src="pp05.png" width="48%" alt="t31 Resonance Amplitude" />
-  <img src="pp03.png" width="48%" alt="t34 Convergence" />
-</p>
-<p align="center">
-  <em>Figure 2: Destructive noise interference spectrum (pp05, Left) and analytical series convergence limit (pp03, Right).</em>
-</p>
+core = SHRPPCore(dimension=16)
 
----
+fib_times = core.fibonacci_time(n_max=100)
+fib_amplitudes = core.fibonacci_amplitudes(n_max=100)
 
-### 3. Quantum Purity Retention & Multi-Level Healing Dynamics
-Long-term evolution highlights that while periodic pulsing suffers linear state decay, the fractal-like discrete interventions maintain stability boundaries and prevent system dissipation from reaching thermal death.
+rho = core.rho_error.copy()
+healed_rho = core.lindblad_evolve(rho, steps=500, dt=0.001)
 
-<p align="center">
-  <img src="pp04.png" width="98%" alt="t32 and t33 Healing Dynamics" />
-</p>
-<p align="center">
-  <em>Figure 3: Monotonic state purity healing bounds (t32, Left) and late-stage dynamic decoupling superiority (t33, Right) via pp04.</em>
-</p>
+print("Purity:", core.purity(healed_rho))
+print("Trace:", healed_rho.trace())
+```
 
----
+`SHRPPCore(dimension, alpha=0.5, gamma=1.0, k0=1.0)` has these constructor parameters:
 
-##  Quick Start
+- `dimension`: size of the density matrix
+- `alpha`: exponent for Fibonacci amplitudes
+- `gamma`: healing-operator coupling
+- `k0`: scale used by the generalized mirror
+
+### Calculate a resonance spectrum
 
 ```python
 import numpy as np
+from shrpp_core import SHRPPCore, resonance_spectrum
+
+core = SHRPPCore(dimension=5)
+times = core.fibonacci_time(n_max=100)
+omegas = np.linspace(0.01, 10.0, 2000)
+
+amplitude = resonance_spectrum(times, omegas)
+print("Maximum amplitude:", amplitude.max())
+```
+
+### Use mirror operators
+
+```python
 from shrpp_core import SHRPPCore
 
-# Initialize the core engine on a scalable dimension
 core = SHRPPCore(dimension=16)
+unified = core.unified_mirror()
+components = core.mirror_components()
 
-# Generate fractal time sequence matrices
-fib_times = core.fibonacci_time(n_max=100)
-
-# Evolve an initial error state through the self-healing simulator
-initial_state = core.rho_error.copy()
-healed_state = core.lindblad_evolve(initial_state, steps=500, dt=0.001)
-
-# Check state purity conservation
-print(f"Healed State Purity: {core.purity(healed_state)}")
+mirror, k = core.generalized_mirror(level=5)
+print("k:", k)
 ```
 
-##  Commercial Licensing & IP Acquisition Notice
+The mirror operators are constructed from tensor products of two-dimensional Pauli matrices. The 16-dimensional implementation is exercised by test `t35`.
 
-**This framework and its underlying unique mathematical methodologies are available for intellectual property (IP) acquisition, technology transfer, or commercial licensing.**
+## Running the Tests
 
-While the current open-source repository is distributed under the strict copyleft terms of the **AGPL-3.0 License** (suitable for non-commercial academic evaluation), it is specifically architected to serve as a high-value asset for quantum technology companies.
+The test script writes results to `shrpp_results.json`:
 
-Organizations looking to:
-*   Integrate this infinite-domain framework into proprietary full-stack quantum software,
-*   Deploy these algorithms within closed-source quantum cloud environments without AGPL restrictions,
-*   Or acquire exclusive worldwide patent rights for hardware optimization.
-*   **Patent Ready:** The underlying innovations are currently unpatented, leaving the exclusive global **"Right to Patent"** fully intact. The acquiring party will receive the complete exclusive rights to file, register, and proprietary-own all worldwide patents derived from this framework and its architectural blueprints.
+```bash
+python test_shrpp.py
+```
 
-Are invited to initiate formal commercial discussions. For serious inquiries regarding corporate licensing packages, technology transfer, or full IP purchasing, please contact the author directly via the credentials listed below
+The tests cover:
 
-E-mail: synthesis496@gmail.com
+- **t31**: Fibonacci-time versus periodic-time resonance suppression
+- **t32**: purity evolution and monotonicity over cumulative Fibonacci levels
+- **t33**: Fibonacci-position versus periodic-position dynamic decoupling
+- **t34**: partial sums of the Fibonacci-weighted spectral series
+- **t35**: involution and anti-commutation properties of mirror components
+- **t40**: codespace and error-state behavior for a generalized mirror
 
-##  Citation & Academic Reference
+Results are serialized as JSON. Numerical values may vary slightly depending on the NumPy version and platform.
+
+## Running the Benchmark
+
+The benchmark evaluates dimensions 8, 16, 32, 64, 128, and 256. It performs five measurements per dimension and estimates the scaling exponent using a log-log linear fit.
+
+```bash
+python benchmark_shrpp.py
+```
+
+This writes `shrpp_benchmark.json` containing:
+
+- `dimensions`
+- `times`
+- `std`
+- `scaling_exponent`
+
+## Experimental Results
+
+### Scaling and Mirror Algebra
+
+<p align="center">
+  <img src="pp01.png" width="48%" alt="Dimensional runtime scaling benchmark">
+  <img src="pp02.png" width="48%" alt="Anticommutation and algebraic consistency results">
+</p>
+
+<p align="center">
+  <em>Left: runtime versus dimension. Right: anti-commutation/algebraic consistency results.</em>
+</p>
+
+### Resonance Suppression and Numerical Convergence
+
+<p align="center">
+  <img src="pp05.png" width="48%" alt="Fibonacci resonance amplitude spectrum">
+  <img src="pp03.png" width="48%" alt="Spectral partial-sum convergence">
+</p>
+
+<p align="center">
+  <em>Left: resonance spectrum. Right: spectral series convergence.</em>
+</p>
+
+### Purity Healing and Dynamic Decoupling
+
+<p align="center">
+  <img src="pp04.png" width="98%" alt="Purity healing and dynamic decoupling comparison">
+</p>
+
+<p align="center">
+  <em>Comparison of purity evolution and Fibonacci versus periodic gate positions.</em>
+</p>
+
+## Implementation Details
+
+### Lindblad evolution
+
+`lindblad_step(rho, dt)` evaluates
+
+\[
+\dot{\rho}=-i[H,\rho]+\gamma\left(L\rho L^\dagger-
+\frac{1}{2}\{L^\dagger L,\rho\}\right)
+\]
+
+It updates the density matrix and normalizes the result by `np.trace(rho_new)`. In the default configuration, `H` is a zero matrix and `L_heal` contains entries shifted by two indices.
+
+### Fibonacci sequence
+
+The sequence begins with `[1, 1, ...]` and uses:
+
+\[
+F_n=F_{n-1}+F_{n-2}
+\]
+
+Fibonacci amplitudes are calculated as:
+
+\[
+A_n=\phi^{-\alpha n}
+\]
+
+Alternating phases use \((-1)^n\theta_0\). Defaults are defined in `shrpp_core.py`.
+
+### Purity
+
+`rho_error` is initialized with a 1.0 entry at `[0, 0]`. Purity is calculated as:
+
+\[
+\mathrm{Purity}(\rho)=\mathrm{Re}\left(\operatorname{Tr}(\rho^2)\right)
+\]
+
+## License
+
+This repository is distributed under the [GNU Affero General Public License v3.0](LICENSE).
+
+Copyright (c) 2026 Chutiphong Bunloed. All Rights Reserved.
+
+## Citation
 
 ```bibtex
-@misc{bunloed2026shrpp,
+@software{bunloed2026shrpp,
   author       = {Bunloed, Chutiphong},
-  title        = {SHRPPCore: PIC Infinite-Domain Open Quantum System Framework using Fibonacci Time Self-Similarity and Folding Mirrors},
+  title        = {ShrPP_FT_PIC: PIC Infinite-Domain Open Quantum System Framework using Fibonacci Time Self-Similarity and Folding Mirrors},
   year         = {2026},
   publisher    = {GitHub},
-  journal      = {GitHub Repository},
-  howpublished \(={\url{https://github.com/synthesis496/ShrPP_FT_PIC}},\)
-  note         = {ORCID: 0009-0003-4295-7521. DOI: [10.5281/Zenodo.23384785]}
+  version      = {1.0.0},
+  url          = {https://github.com/synthesis496/ShrPP_FT_PIC},
+  doi          = {10.5281/Zenodo.23384785}
 }
 ```
+
+Machine-readable citation metadata is available in [`CITATION.cff`](CITATION.cff).
+
+## Contact
+
+- Email: [synthesis496@gmail.com](mailto:synthesis496@gmail.com)
+- Repository: <https://github.com/synthesis496/ShrPP_FT_PIC>
 
 
 
