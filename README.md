@@ -107,13 +107,6 @@ healed_state = core.lindblad_evolve(initial_state, steps=500, dt=0.001)
 print(f"Healed State Purity: {core.purity(healed_state)}")
 ```
 
-## ⚖️ Commercial Licensing & Intellectual Property (IP) Status
-
-This framework is dual-licensed to support both public academic reproducibility and commercial enterprise deployment:
-
-* **Open-Source Stream:** The public repository core is distributed under the strict copyleft terms of the **AGPL-3.0 License** (suitable for non-commercial evaluation and open-science collaboration).
-* **Commercial & Enterprise Inquiries:** For commercial use-cases, full architectural integration without AGPL limitations, or exclusive worldwide technology transfer/patent rights acquisition, please contact the author directly for secure due-diligence sessions.
-
  **Contact:** [synthesis496@gmail.com](mailto:synthesis496@gmail.com)
 
 
