@@ -1,129 +1,266 @@
-# SHRPPCore: Infinite-Domain Open Quantum System Framework
+# ShrPP_FT_PIC
 
-Inventor & Architect: Chutiphong Bunloed
-Affiliation: Independent Researcher, Buriram, Thailand
+**SHRPPCore: PIC Infinite-Domain Open Quantum System Framework**
 
-#Copyright (c) 2026.Chutiphong Bunloed
-#All Rights Reserved.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB.svg)](https://www.python.org)
+[![NumPy](https://img.shields.io/badge/NumPy-required-013243.svg)](https://numpy.org)
 
-DOI 10.5281/Zenodo.23384785
-Orcid : 0009-0003-4295-7521
-
-## Support & Star 🌟
-If you find this Quantum Error Correction architecture useful, or if it helps with your research, please consider giving this repository a **Star**! It helps increase visibility and keeps me motivated to maintain the project. 
-
-
-**SHRPPCore** is a high-performance open-source computational framework designed to simulate and protect **Open Quantum Systems** under structural noise. 
-
-By shifting away from traditional brute-force classical simulations, this framework utilizes the **self-similarity of Fibonacci time sequences** and **dimensional folding mirrors** to model complex quantum dynamics. It achieves extreme scalability and state-healing benchmarks—even on traditional hardware—making it a powerful tool for analyzing infinite-domain quantum physics.
+พัฒนาและจัดทำโดย **Chutiphong Bunloed**  
+Independent Researcher, Buriram, Thailand  
+ORCID: [0009-0003-4295-7521](https://orcid.org/0009-0003-4295-7521)  
+DOI: [10.5281/Zenodo.23384785](https://doi.org/10.5281/Zenodo.23384785)
 
 ---
 
-##  Key Innovations & Architecture
+## ภาพรวม
 
-The architecture relies on the interplay between three main concepts deployed across the provided repository files (`shrpp_core.py`, `shrpp_tests.py`, and `shrpp_benchmark.py`):
+**ShrPP_FT_PIC** เป็นชุดโค้ด Python สำหรับทดลองและจำลองคอนเซปต์ระบบควอนตัมเปิดด้วยเครื่องมือเชิงตัวเลขของ NumPy โดยมีองค์ประกอบหลักดังนี้
 
-*   **Fibonacci-Driven Dynamics (Aperiodic Driving):** Instead of standard periodic time steps, the framework drives the system along Fibonacci time intervals. This mathematical self-similarity triggers destructive interference against unwanted environmental noise, acting as a natural buffer that compresses resonance spikes.
-*   **Folding & Mirror Symmetries:** Incorporating unified and generalized reflection operators allows the system to compress infinite-domain spaces. By "folding" quantum information back into controlled symmetry sectors, the engine avoids the exponential memory explosion typical of high-dimensional matrix operations.
-*   **Quantum State Healing:** Features an open quantum system simulator based on master equations, augmented with multi-level healing operators. It drives system dissipation toward structured recovery rather than entropy, maintaining state purity over prolonged scales.
+- ลำดับเวลาแบบ Fibonacci และขนาดของแอมพลิจูดแบบลดลงด้วยอัตราส่วน golden ratio
+- Lindblad-style evolution สำหรับ density matrix
+- Operators สำหรับ unified mirror, component mirrors และ generalized mirror
+- โค้ดทดสอบเชิงสเปกตรัม, purity, dynamic decoupling และสมบัติพีชคณิต
+- Benchmark การคำนวณ Lindblad step ตามขนาดมิติ
 
----
+จุดสำคัญคือมิติของ density matrix และมาตรฐานการจำลองของระบบควบคุมไม่ได้ฝังอยู่ในโครงสร้างหลักจนทำให้โค้ดเป็นแพ็คเกจแบบปรับแต่งได้อย่างสมบูรณ์ ตัวอย่างจึงใช้ APIs ที่มีอยู่ในไฟล์นี้โดยตรง
 
-##  Practical Benefits
+> โค้ดปัจจุบันเป็นโค้ดวิจัยและเปรียบเทียบเชิงตัวเลข โดยโค้ดของ Lindblad evolution สามารถรันได้บน NumPy หากต้องนำไปใช้งานเชิงอุปกรณ์หรือระบบจริง ต้องประเมินและขยายโมเดล Hamiltonian, noise operators และเงื่อนไขฟิสิกส์เพิ่มเติม
 
-*   **Sub-Exponential Scaling:** Through scaling benchmarks, the engine bypasses the standard \(\mathcal{O}(d^3)\) computational bottleneck. The structural symmetries push the scaling exponent down, allowing classical computers to simulate ultra-high dimensions without memory overflow.
-*   **Advanced Dynamic Decoupling:** Proves that non-periodic, fractal-like gate interventions protect quantum states from decoherence significantly better than traditional uniform pulsing methods.
-*   **Error Mitigation Research:** Provides out-of-the-box spectral functions to observe how non-local state transitions filter errors out post-measurement, crucial for developing software-based quantum error mitigation (QEM).
+## คุณสมบัติที่มีในโค้ด
 
----
+| คุณสมบัติ | API/ไฟล์หลัก |
+|---|---|
+| ลำดับ Fibonacci | `SHRPPCore.fibonacci_sequence()` |
+| เวลา Fibonacci | `SHRPPCore.fibonacci_time()` |
+| แอมพลิจูด/เฟส Fibonacci | `SHRPPCore.fibonacci_amplitudes()`, `SHRPPCore.fibonacci_phases()` |
+| Lindblad evolution | `SHRPPCore.lindblad_step()`, `SHRPPCore.lindblad_evolve()` |
+| Density-matrix purity | `SHRPPCore.purity()` |
+| Unified/component mirror | `SHRPPCore.unified_mirror()`, `SHRPPCore.mirror_components()` |
+| Generalized mirror | `SHRPPCore.generalized_mirror(level)` |
+| สเปกตรัมแอมพลิจูด | `resonance_amplitude()`, `resonance_spectrum()`, `fib_spectral_function()` |
 
-##  Project Structure
+## โครงสร้าง Repository
 
-The project is lightweight and streamlined into 3 main pillars:
-1.  **`shrpp_core.py`:** The computational engine. Contains the core quantum object mapping, open system dynamics simulators, fractal time calculators, and spatial folding operators.
-2.  **`shrpp_tests.py`:** A suite of validation tests (t31 to t40) verifying spectral suppression ratios, purity monotonicity, dynamic decoupling improvements, and algebraic symmetries.
-3.  **`shrpp_benchmark.py`:** An automated performance profiling script that computes the asymptotic log-log runtime scaling exponent of the framework across expanding dimensions.
+```text
+ShrPP_FT_PIC/
+├── shrpp_core.py          # คลาสหลัก ฟังก์ชันสเปกตรัม และ mirror operators
+├── test_shrpp.py          # การทดสอบเชิงตัวเลข t31-t35 และ t40
+├── benchmark_shrpp.py     # Benchmark ขนาดมิติ 8 ถึง 256
+├── pp01.png ... pp05.png  # กราฟผลลัพธ์สำหรับ README/documentation
+├── CITATION.cff           # Metadata สำหรับการอ้างอิง
+├── LICENSE                # GNU AGPL-3.0
+├── README.md              # เอกสารโปรเจกต์
+└── index.md               # เนื้อหาเว็บไซต์ประกอบเอกสาร
+```
 
+## การติดตั้ง
 
-## 📊 Empirical Verification & Simulation Results
+ต้องใช้ Python 3 และ NumPy
 
-To visualize the computational breakthroughs achieved by the framework, the test suites yield the following empirical figures:
+```bash
+git clone https://github.com/synthesis496/ShrPP_FT_PIC.git
+cd ShrPP_FT_PIC
+pip install numpy
+```
 
-### 1. Dimensional Scaling Benchmarks & Algebraic Consistency
-Log-log asymptotic analysis shows smooth computational scaling across expanding dimensions. The structural algebraic folding components satisfy strict anti-commutation properties with zero floating-point error.
+ไม่มีไฟล์ติดตั้งแพ็กเกจหรือ build step เพิ่มเติมใน repository นี้
 
-<p align="center">
-  <img src="pp01.png" width="48%" alt="Benchmark Scaling" />
-  <img src="pp02.png" width="48%" alt="t35 Anticommutation Heatmap" />
-</p>
-<p align="center">
-  <em>Figure 1: Runtime performance log-log complexity scaling (pp01, Left) and machine-epsilon algebraic check (pp02, Right).</em>
-</p>
+## Quick Start
 
----
+### เริ่มต้นด้วย SHRPPCore
 
-### 2. Resonance Suppression & Mathematics Stability
-Across a 2,000-point frequency resolution spectrum, the Fibonacci-driven model completely dampens catastrophic energy build-ups. The numerical sum demonstrates perfect convergence layout over long-term evolution horizons.
+```python
+from shrpp_core import SHRPPCore
 
-<p align="center">
-  <img src="pp05.png" width="48%" alt="t31 Resonance Amplitude" />
-  <img src="pp03.png" width="48%" alt="t34 Convergence" />
-</p>
-<p align="center">
-  <em>Figure 2: Destructive noise interference spectrum (pp05, Left) and analytical series convergence limit (pp03, Right).</em>
-</p>
+core = SHRPPCore(dimension=16)
 
----
+fib_times = core.fibonacci_time(n_max=100)
+fib_amplitudes = core.fibonacci_amplitudes(n_max=100)
 
-### 3. Quantum Purity Retention & Multi-Level Healing Dynamics
-Long-term evolution highlights that while periodic pulsing suffers linear state decay, the fractal-like discrete interventions maintain stability boundaries and prevent system dissipation from reaching thermal death.
+rho = core.rho_error.copy()
+healed_rho = core.lindblad_evolve(rho, steps=500, dt=0.001)
+print("Purity:", core.purity(healed_rho))
+print("Trace:", healed_rho.trace())
+```
 
-<p align="center">
-  <img src="pp04.png" width="98%" alt="t32 and t33 Healing Dynamics" />
-</p>
-<p align="center">
-  <em>Figure 3: Monotonic state purity healing bounds (t32, Left) and late-stage dynamic decoupling superiority (t33, Right) via pp04.</em>
-</p>
+ในตัวสร้าง `SHRPPCore(dimension, alpha=0.5, gamma=1.0, k0=1.0)` ค่าเริ่มต้นคือ:
 
----
+- `dimension`: จำนวนมิติของ density matrix
+- `alpha`: ตัวชี้กำลังสำหรับแอมพลิจูด Fibonacci
+- `gamma`: ค่า coupling สำหรับ healing operator
+- `k0`: สเกลสำหรับ generalized mirror
 
-##  Quick Start
+### คำนวณสเปกตรัม
 
 ```python
 import numpy as np
-from shrpp_core import SHRPPCore
+from shrpp_core import SHRPPCore, resonance_spectrum
 
-# Initialize the core engine on a scalable dimension
-core = SHRPPCore(dimension=16)
+core = SHRPPCore(dimension=5)
+times = core.fibonacci_time(n_max=100)
+omegas = np.linspace(0.01, 10.0, 2000)
 
-# Generate fractal time sequence matrices
-fib_times = core.fibonacci_time(n_max=100)
-
-# Evolve an initial error state through the self-healing simulator
-initial_state = core.rho_error.copy()
-healed_state = core.lindblad_evolve(initial_state, steps=500, dt=0.001)
-
-# Check state purity conservation
-print(f"Healed State Purity: {core.purity(healed_state)}")
+amplitude = resonance_spectrum(times, omegas)
+print("Maximum amplitude:", amplitude.max())
 ```
 
- **Contact:** [synthesis496@gmail.com](mailto:synthesis496@gmail.com)
+### ใช้ mirror operators
 
+```python
+from shrpp_core import SHRPPCore
 
-##  Citation & Academic Reference
+core = SHRPPCore(dimension=16)
+unified = core.unified_mirror()
+components = core.mirror_components()
 
-```bibtex
-@misc{bunloed2026shrpp,
-  author       = {Bunloed, Chutiphong},
-  title        = {SHRPPCore: PIC Infinite-Domain Open Quantum System Framework using Fibonacci Time Self-Similarity and Folding Mirrors},
-  year         = {2026},
-  publisher    = {GitHub},
-  journal      = {GitHub Repository},
-  howpublished \(={\url{https://github.com/synthesis496/ShrPP_FT_PIC}},\)
-  note         = {ORCID: 0009-0003-4295-7521. DOI: [10.5281/Zenodo.23384785]}
+# generalized mirror เป็น diagonal matrix
+mirror, k = core.generalized_mirror(level=5)
+print("k:", k)
+```
+
+`unified_mirror()` และ `mirror_components()` สร้าง operator จากโครงสร้าง tensor-product ของ Pauli matrices และได้รับการทดสอบร่วมกับมิติ 16 ใน repository
+
+## Running Tests
+
+ไฟล์ทดสอบจะเขียนผลลัพธ์ลง `shrpp_results.json`
+
+```bash
+python test_shrpp.py
+```
+
+ผลหลักที่ทดสอบ:
+
+- **t31** เปรียบเทียบ resonance ของ Fibonacci time กับ periodic time
+- **t32** ตรวจ purity ระยะยาวและตรวจ monotonicity ตามขีด tolerance
+- **t33** เปรียบเทียบ Fibonacci gate positions กับ periodic gate positions
+- **t34** คำนวณ partial sums ของ Fibonacci-weighted spectral series
+- **t35** ตรวจ involution error และ anti-commutation norms ของ mirror components
+- **t40** ทดสอบการฉาย codespace และ error state ด้วย generalized mirror
+
+ตัวอย่างผลลัพธ์จะอยู่ในรูปแบบ JSON เช่น:
+
+```json
+{
+  "t31": {
+    "max_periodic": 100.0,
+    "max_fibonacci": 2.5,
+    "suppression_ratio": 40.0
+  }
 }
 ```
 
+ค่าโดยประมาณอาจแตกต่างตามเวอร์ชัน NumPy หรือแพลตฟอร์ม
 
+## Benchmark
 
+รัน benchmark สำหรับมิติ 8, 16, 32, 64, 128 และ 256 โดยวัดเวลา 5 รอบต่อมิติ เพื่อคำนวณ scaling exponent ด้วย log-log linear fit
 
+```bash
+python benchmark_shrpp.py
+```
+
+โปรแกรมจะเขียนผลไปที่ `shrpp_benchmark.json` โดยมีฟิลด์:
+
+- `dimensions`
+- `times`
+- `std`
+- `scaling_exponent`
+
+## ผลการทดลองในรูปภาพ
+
+### ความชันการสเกลและสมบัติการหักล้างของ mirror
+
+<p align="center">
+  <img src="pp01.png" width="48%" alt="Dimensional runtime scaling benchmark">
+  <img src="pp02.png" width="48%" alt="Anticommutation and algebraic consistency results">
+</p>
+
+<p align="center">
+  <em>ภาพซ้าย: benchmark เวลาเทียบกับมิติ และภาพขวา: ผลการตรวจ anticommutation/algebraic consistency</em>
+</p>
+
+### Resonance suppression และ numerical convergence
+
+<p align="center">
+  <img src="pp05.png" width="48%" alt="Fibonacci resonance amplitude spectrum">
+  <img src="pp03.png" width="48%" alt="Spectral partial-sum convergence">
+</p>
+
+<p align="center">
+  <em>ภาพซ้าย: resonance spectrum และภาพขวา: ผล convergence ของ series</em>
+</p>
+
+### Purity healing และ dynamic decoupling
+
+<p align="center">
+  <img src="pp04.png" width="98%" alt="Purity healing and dynamic decoupling comparison">
+</p>
+
+<p align="center">
+  <em>ภาพเปรียบเทียบ purity evolution และผลจาก Fibonacci/periodic gate positions</em>
+</p>
+
+## รายละเอียด Implementation
+
+### Lindblad evolution
+
+`lindblad_step(rho, dt)` คำนวณ
+
+\[
+\dot{\rho}=-i[H,\rho]+\gamma\left(L\rho L^\dagger-
+\frac{1}{2}\{L^\dagger L,\rho\}\right)
+\]
+
+แล้วบวกผลกับ density matrix และ normalize ด้วย `trace(rho_new)` โดยในตัวตั้งต้น `H` เป็น zero matrix และ `L_heal` มี elements ที่เลื่อนไปสองตำแหน่ง
+
+### Fibonacci sequence
+
+ค่าเริ่มต้นคือ `[1, 1, ...]` โดยใช้ recurrence
+
+\[
+F_n=F_{n-1}+F_{n-2}
+\]
+
+แอมพลิจูดใช้
+
+\[
+A_n=\phi^{-\alpha n}
+\]
+
+และ phase ใช้ \( (-1)^n\theta_0 \) โดยตัวแปรเริ่มต้น `phi`, `alpha` และ `theta0` มาจาก `shrpp_core.py`
+
+### Pure state และ purity
+
+`rho_error` เริ่มต้นเป็น density matrix ที่มีค่า 1.0 ที่ `[0,0]` และ purity คำนวณจาก
+
+\[
+\mathrm{Purity}(\rho)=\mathrm{Re}\left(\operatorname{Tr}(\rho^2)\right)
+\]
+
+## License
+
+โค้ดใน repository นี้เผยแพร่ภายใต้ [GNU Affero General Public License v3.0](LICENSE)
+
+Copyright (c) 2026 Chutiphong Bunloed. All Rights Reserved.
+
+## Citation
+
+```bibtex
+@software{bunloed2026shrpp,
+  author       = {Bunloed, Chutiphong},
+  title        = {ShrPP_FT_PIC: PIC Infinite-Domain Open Quantum System Framework using Fibonacci Time Self-Similarity and Folding Mirrors},
+  year         = {2026},
+  publisher    = {GitHub},
+  version      = {1.0.0},
+  url          = {https://github.com/synthesis496/ShrPP_FT_PIC},
+  doi          = {10.5281/Zenodo.23384785}
+}
+```
+
+สำหรับข้อมูลจาก GitHub สามารถอ่าน metadata ได้ที่ [`CITATION.cff`](CITATION.cff)
+
+## Contact
+
+- Email: [synthesis496@gmail.com](mailto:synthesis496@gmail.com)
+- Repository: <https://github.com/synthesis496/ShrPP_FT_PIC>
